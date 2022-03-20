@@ -118,7 +118,7 @@ function postData() {
   }
 
   //AJAX call to post data to server for calculation
-  $.post("http://sbuxtipcalculator.herokuapp.com/calculate", {
+  $.post("https://sbuxtipcalculator.herokuapp.com/calculate", {
     'partners': JSON.stringify(partners),
     'dph': sessionStorage.getItem("dph"),
     'tips': sessionStorage.getItem("tips"),
