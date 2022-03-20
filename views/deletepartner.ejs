@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- Source Code -->
+  <script type="text/javascript" src="/js/deletepartner.js"></script>
+  <!-- Bootstrap Functionality -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
+  <title>Tip Calculator</title>
+</head>
+
+<body class="bg-dark">
+
+  <div class="container-fluid">
+    <a id="backToPartnerEntry">Back to partner hours entry</a>
+  </div>
+
+  <div class="container-fluid pt-5">
+    <div class="col">
+      <h4>Select the partner(s) you want to delete from the permanent store partner list.</h4>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="container-fluid h-100 d-flex justify-content-center entry">
+    <div class="row row-cols-1 justify-content-center">
+      <!-- <span id="partnerListEJS" hidden><%= JSON.stringify(partnerList); %></span> -->
+      <form id="deletePartnerForm" action="#" method="post">
+
+        <% partnerList.forEach(function(partner){ %>
+        <div class="row">
+          <div class="item">
+            <input class="for-check-input" type="checkbox" name="checkbox" value="<%= partner.partnerNumber %>">
+            <h4 class="ps-3"><%= partner.lastName %>, <%= partner.firstName %></h4>
+          </div>
+        </div>
+        <%})%>
+
+        <input class="btn btn-lg btn-success mt-3" type="submit" name="" value="Delete Partner(s)">
+      </form>
+    </div>
+  </div>
+</body>
+</html>
