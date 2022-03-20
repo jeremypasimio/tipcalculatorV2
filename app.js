@@ -9,7 +9,11 @@ const mongoose = require("mongoose");
 const algorithm = require(__dirname + "/algorithm.js")
 
 const app = express();
-const port = 3000;
+let port = process.env.PORT;
+
+if(port === null || port === ""){
+  port = 3000;
+}
 
 //Mongodb connect
 mongoose.connect("mongodb+srv://jpadmin:B3r3nleo@storedb.z9oc3.mongodb.net/StoreDB?retryWrites=true&w=majority", {
