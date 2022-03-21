@@ -53,19 +53,13 @@
   <hr>
 
   <div class="container-fluid h-100 d-flex justify-content-center entry">
-    <div class="row row-cols-2 justify-content-center">
+
       <span id="partnerListEJS" hidden><%= JSON.stringify(partnerList); %></span>
 
-      <table class="table table-dark table-sm" id="hoursEntryTable">
-        <table>
-          <div class="col-4 align-self-center">
-            <button class="btn btn-lg btn-success" type="button" name="button" onClick="postData()">Calculate Payout</button>
-          </div>
+      <form id="entryForm" action="/calculate" method="post">
 
-            <a href="/results" id="hiddenLink" hidden></a>
+      </form>
 
     </div>
-  </div>
 </body>
-
 </html>

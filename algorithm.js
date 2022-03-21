@@ -14,7 +14,7 @@ module.exports.disburse = function (payList, tips) {
     var partnerOver20 = 0;
 
     for (var i = 0; i < payList.length; i++) {
-        if (payList[i].payout > 10) {
+        if (payList[i].payout >= 10) {
             partnerOver10 += 1;
         }
 
@@ -176,7 +176,7 @@ module.exports.disburse = function (payList, tips) {
             }
 
             if (i < basePlusOne) {
-                if (quarters > 0 && currentPayout - 10 > 0) {
+                if (quarters > 0 && currentPayout - 10 >= 0) {
                     currentPayout -= 10;
                     quarters -= 1;
                     q += 1;

@@ -6,7 +6,7 @@ $(document).ready(function() {
   $("#moneyDisplay").text(`$${sessionStorage.getItem("moneyTotal")}`);
   $("#dollarPerHourDisplay").text(`$${sessionStorage.getItem("dph")}/hr`);
 
-  let roundingError = sessionStorage.getItem("roundingError");
+  let roundingError = $("#hiddenRoundingValue").val();
   if (roundingError < 0) {
     $("#roundMsg").text(`Retrieve ${Math.abs(roundingError)} dollar(s) from the tip jar to complete tip funds.`)
   } else if (roundingError > 0) {
@@ -20,7 +20,7 @@ $(document).ready(function() {
 });
 
 function populateResults() {
-  let finalPartnerList = JSON.parse(sessionStorage.getItem("finalPartnerList"));
+  let finalPartnerList = JSON.parse($("#hiddenPartnerList").text());
   console.log(finalPartnerList);
   let div = document.getElementById("resultsDiv");
 
@@ -89,59 +89,3 @@ function populateResults() {
     div.insertAdjacentHTML('beforeend', htmlOut);
   })
 }
-
-// <
-// div class = "partner" >
-//
-//   <
-//   div class = "row row-cols-2" >
-//   <
-//   div class = "col" >
-//   <
-//   h4 > lName, fName < /h4> <
-//   /div> <
-//   div class = "col" >
-//   <
-//   h4 > Payout < /h4> <
-//   /div> <
-//   /div>
-//
-//   <
-//   div class = "row row-cols-3 mt-3" >
-//   <
-//   div class = "col" >
-//   <
-//   h6 > Hundreds: 1 < /h6> <
-//   /div> <
-//   div class = "col" >
-//   <
-//   h6 > fifties: 1 < /h6> <
-//   /div> <
-//   div class = "col" >
-//   <
-//   h6 > twenties: 1 < /h6> <
-//   /div> <
-//   div class = "col" >
-//   <
-//   h6 > tens: 1 < /h6> <
-//   /div> <
-//   div class = "col" >
-//   <
-//   h6 > fives: 1 < /h6> <
-//   /div> <
-//   div class = "col" >
-//   <
-//   h6 > ones: 1 < /h6> <
-//   /div> <
-//   div class = "col" >
-//   <
-//   h6 > quarters: 1 < /h6> <
-//   /div> <
-//   div class = "col" >
-//   <
-//   h6 > dimes: 1 < /h6> <
-//   /div> <
-//   div class = "col" >
-//   <
-//   h6 > nickels: 1 < /h6> </div>
-//   </div> </div> <hr class = "mt-3" >

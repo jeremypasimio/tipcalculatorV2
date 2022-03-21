@@ -9,11 +9,11 @@ const mongoose = require("mongoose");
 const algorithm = require(__dirname + "/algorithm.js")
 
 const app = express();
-let port = process.env.PORT;
-
-if(port === null || port === ""){
-  port = 3000;
-}
+// let port = process.env.PORT;
+//
+// if(port === null || port === ""){
+//   port = 3000;
+// }
 
 //Mongodb connect
 mongoose.connect("mongodb+srv://jpadmin:B3r3nleo@storedb.z9oc3.mongodb.net/StoreDB?retryWrites=true&w=majority", {
@@ -231,12 +231,7 @@ app.post("/deletepartner/:storeNum", (req, res) => {
 
 //calculate payouts and disbursement
 app.post("/calculate", (req, res) => {
-  console.log("Posted to calculate");
-  //console.log(JSON.parse(req.body.partners));
-  //console.log(JSON.parse(req.body.dph));
-  //console.log(JSON.parse(req.body.tips));
-  //console.log(JSON.parse(req.body.totalHours));
-  //console.log(JSON.parse(req.body.moneyTotal));
+  console.log(req.body);
 
   let paidPartners = algorithm.calcPayout(JSON.parse(req.body.partners), JSON.parse(req.body.dph));
 
@@ -254,24 +249,14 @@ app.post("/calculate", (req, res) => {
 
   console.log("roundedTotal = " + roundedTotal);
 
-  let data ={'partners':disbursedPartners, 'roundingError': roundingError}
-  //let data = {"testItem": "test"}
-
-
-  res.send(data);
-  // res.render("results", {
-  //   totalMoney: JSON.parse(req.body.moneyTotal),
-  //   dph: JSON.parse(req.body.dph),
-  //   roundingError: roundingError,
-  //   partnerList: disbursedPartners
-  // });
+  res.render("results",{partners: JSON.stringify(disbursedPartners), roundingError: roundingError});
 });
 
-app.get("/results", (req,res) => {
+app.get("/results", (req, res)=> {
   res.render("results");
 })
 
 //Server listen
-app.listen(port, () => {
-  console.log("Server listening on port: " + port);
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Server listening");
 });

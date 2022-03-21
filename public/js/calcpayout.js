@@ -21,9 +21,36 @@ $(document).ready(function() {
 });
 
 function populateTable(partnerList) {
+  let table = document.getElementById("entryForm");
+
   for (var i = 0; i < partnerList.length; i++) {
-    addRow(i, partnerList[i]);
+    let name = partnerList[i].lastName + ', ' + partnerList[i].firstName;
+
+    table.insertAdjacentHTML('beforeend', `<div class="row row-cols-2 justify-content-center">
+
+      <div class="col">
+        <h4 class="nameHeading">${name}</h4>
+      </div>
+
+      <div class="col">
+        <input class="hoursInput" type="text" placeholder="Enter Hours" onchange="sumHours()">
+      </div>
+
+    </div>
+    <hr>`);
   }
+  let dph = sessionStorage.getItem("dph");
+  let tips = sessionStorage.getItem("tips");
+  console.log("tips: "+ tips);
+  let moneyTotal = sessionStorage.getItem("moneyTotal");
+  table.insertAdjacentHTML('beforeend', `<input name="tips" type="text" value=${tips} hidden>
+    <input name="moneyTotal" type="text" value="${moneyTotal}" hidden>
+    <input id="partners" name="partners" type="text" value="" hidden>
+    <input name="dph" type="text" value="${dph}" hidden>
+    <div class="col-4 align-self-center">
+    <button class="btn btn-lg btn-success" type="button" onClick="postData()">Calculate Payout</button>
+  </div>`)
+
 }
 
 function addRow(index, partner) {
@@ -117,19 +144,7 @@ function postData() {
     partners.push(partner);
   }
 
-  //AJAX call to post data to server for calculation
-  $.post("https://sbuxtipcalculator.herokuapp.com/calculate", {
-    'partners': JSON.stringify(partners),
-    'dph': sessionStorage.getItem("dph"),
-    'tips': sessionStorage.getItem("tips"),
-    'moneyTotal': sessionStorage.getItem("moneyTotal")
-  }).done(response=>{
-    console.log("Ajax request done");
-    console.log(response);
-    sessionStorage.setItem("finalPartnerList", JSON.stringify(response.partners));
-    sessionStorage.setItem("roundingError", response.roundingError);
-    document.getElementById("hiddenLink").click();
-    //$("#roundingInput").val(response.roundingError);
-    //$("#partnerInput").val(JSON.parse(response.partners));
-  });
+  $("#partners").val(JSON.stringify(partners));
+  console.log($("#partners").val());
+  $("#entryForm").submit();
 }
