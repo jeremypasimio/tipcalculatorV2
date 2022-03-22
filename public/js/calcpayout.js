@@ -46,7 +46,7 @@ function populateTable(partnerList) {
   table.insertAdjacentHTML('beforeend', `<input name="tips" type="text" value=${tips} hidden>
     <input name="moneyTotal" type="text" value="${moneyTotal}" hidden>
     <input id="partners" name="partners" type="text" value="" hidden>
-    <input name="dph" type="text" value="${dph}" hidden>
+    <input id="dph" name="dph" type="text" value="${dph}" hidden>
     <div class="col-4 align-self-center">
     <button class="btn btn-lg btn-success" type="button" onClick="postData()">Calculate Payout</button>
   </div>`)
@@ -144,6 +144,8 @@ function postData() {
     partners.push(partner);
   }
 
+  let dph = sessionStorage.getItem("dph");
+  $("#dph").val(dph);
   $("#partners").val(JSON.stringify(partners));
   console.log($("#partners").val());
   $("#entryForm").submit();
