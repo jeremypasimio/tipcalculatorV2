@@ -6,6 +6,8 @@
  */
 module.exports.disburse = function (payList, tips) {
 
+    console.log("tips: ");
+    console.log(tips);
     payList = payList.sort(compareByPayout);
 
     //Number of partners is equal to payList.length
@@ -14,7 +16,7 @@ module.exports.disburse = function (payList, tips) {
     var partnerOver20 = 0;
 
     for (var i = 0; i < payList.length; i++) {
-        if (payList[i].payout >= 10) {
+        if (payList[i].payout > 10) {
             partnerOver10 += 1;
         }
 
@@ -176,7 +178,7 @@ module.exports.disburse = function (payList, tips) {
             }
 
             if (i < basePlusOne) {
-                if (quarters > 0 && currentPayout - 10 >= 0) {
+                if (quarters > 0 && currentPayout - 10 > 0) {
                     currentPayout -= 10;
                     quarters -= 1;
                     q += 1;
@@ -225,6 +227,10 @@ module.exports.disburse = function (payList, tips) {
  */
 module.exports.calcPayout = function (partners, dph) {
 
+    console.log("partners: ");
+    console.log(partners);
+    console.log("dph: ");
+    console.log(dph);
     var roundedTotal = 0;
     var roundError = 0;
 

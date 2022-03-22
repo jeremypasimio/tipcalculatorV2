@@ -11,6 +11,10 @@ hr{
   color: #fff;
 }
 
+form{
+  width: 75%;
+}
+
 .btn-group{
   padding-top: 5px;
 }

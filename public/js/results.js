@@ -6,7 +6,9 @@ $(document).ready(function() {
   $("#moneyDisplay").text(`$${sessionStorage.getItem("moneyTotal")}`);
   $("#dollarPerHourDisplay").text(`$${sessionStorage.getItem("dph")}/hr`);
 
-  let roundingError = $("#hiddenRoundingValue").val();
+  let roundingError = $("#hiddenRoundingValue").text();
+  console.log("roundingError:");
+  console.log(roundingError);
   if (roundingError < 0) {
     $("#roundMsg").text(`Retrieve ${Math.abs(roundingError)} dollar(s) from the tip jar to complete tip funds.`)
   } else if (roundingError > 0) {
