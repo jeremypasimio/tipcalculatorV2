@@ -33,7 +33,7 @@ function populateTable(partnerList) {
       </div>
 
       <div class="col">
-        <input class="hoursInput" type="text" placeholder="Enter Hours" onchange="sumHours()">
+        <input class="hoursInput" type="text" inputmode="decimal" placeholder="Enter Hours" onchange="sumHours()">
       </div>
 
     </div>
@@ -63,7 +63,7 @@ function addRow(index, partner) {
       <h4 class="nameHeading">${partner.lastName}, ${partner.firstName}</h4>
     </div>
     <div class="col pb-3">
-      <input class="hoursInput" type="text" placeholder="Enter Hours" onchange="sumHours()">
+      <input class="hoursInput" type="text" inputmode="decimal" placeholder="Enter Hours" onchange="sumHours()">
     </div>
   </div>`
 }
