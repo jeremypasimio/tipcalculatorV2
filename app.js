@@ -145,8 +145,8 @@ app.post("/addpartner", (req, res) => {
     console.log("borrowed partner");
     let borrowedPartner = {
       lastName: req.body.lastName,
-      firstName: req.body.firstName,
-      partnerNumber: req.body.partnerNumber
+      firstName: req.body.firstName
+      //partnerNumber: req.body.partnerNumber
     }
 
     res.render("addpartner", {
@@ -161,7 +161,7 @@ app.post("/addpartner", (req, res) => {
       $push: {
         partners: {
           $each: [{
-            partnerNumber: parseInt(req.body.partnerNumber),
+            //partnerNumber: parseInt(req.body.partnerNumber),
             lastName: req.body.lastName,
             firstName: req.body.firstName
           }],
