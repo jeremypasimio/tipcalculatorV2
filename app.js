@@ -1,6 +1,7 @@
 "use strict"
 
 //server
+require('dotenv').config();
 const express = require("express");
 const bp = require("body-parser");
 const ejs = require("ejs");
@@ -16,9 +17,12 @@ const app = express();
 // }
 
 //Mongodb connect
-mongoose.connect("mongodb+srv://jpadmin:B3r3nleo@storedb.z9oc3.mongodb.net/StoreDB?retryWrites=true&w=majority", {
-  useNewUrlParser: true
-});
+ mongoose.connect(`mongodb+srv://jpadmin:${process.env.DB_PASS}@storedb.z9oc3.mongodb.net/StoreDB?retryWrites=true&w=majority`, {
+   useNewUrlParser: true
+ });
+
+//Mongodb connect local for local testing
+//mongoose.connect("mongodb://localhost:27017/tipCalcDB",{useNewUrlParser:true});
 
 //Mongodb Schema
 const storeSchema = new mongoose.Schema({
