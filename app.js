@@ -1,7 +1,7 @@
 "use strict"
 
 //server
-//require('dotenv').config();
+require('dotenv').config();
 const express = require("express");
 const bp = require("body-parser");
 const ejs = require("ejs");
@@ -16,10 +16,8 @@ const app = express();
 //   port = 3000;
 // }
 
-//${process.env.DB_PASS}
-
 //Mongodb connect
- mongoose.connect(`mongodb+srv://jpadmin:B3r3leo@storedb.z9oc3.mongodb.net/StoreDB?retryWrites=true&w=majority`, {
+ mongoose.connect(`mongodb+srv://jpadmin:${process.env.DB_PASS}@storedb.z9oc3.mongodb.net/StoreDB?retryWrites=true&w=majority`, {
    useNewUrlParser: true
  });
 
