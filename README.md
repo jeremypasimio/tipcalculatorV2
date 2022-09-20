@@ -1,5 +1,5 @@
 # tipcalculatorV2
-This is version 2 of the Tip Calculator Web App. The purpose of this app is to provide Starbucks partners (employees) with a tool for weekly tip distribution based on hours worked. Use of this app results in fewer errors and less time spent processing tips. The app is cuurently hosted on Heroku at: sbuxtipcalculator.herokuapp.com
+This is version 2 of the Tip Calculator Web App. The purpose of this app is to provide Starbucks partners (employees) with a tool for weekly tip distribution based on hours worked. Use of this app results in fewer errors and less time spent processing tips. The app is cuurently hosted on Heroku at: www.sbuxtip.com
 
 # Upgrades from V1
 Implemented persistence layer via mongodb in order to support multiple stores and their corresponding lists of partners.
@@ -11,7 +11,6 @@ Front end: HTML, CSS/Bootstrap, Javascript
 Back end: Node server, EJS templates, mongodb
 
 # TODO
-Custom domain for easier site lookup
 
 Create feedback link for user to communicate feedback regarding their experience via email
 
